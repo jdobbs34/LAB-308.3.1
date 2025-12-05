@@ -27,21 +27,86 @@
 // There will only be 4 cells per row.
 // There will be no escaped characters other than “\n”.
 
+
+// What fo we know?
+// What do we infer
+// 4 variables for cells, start with an empty string
+// Cells are seperated by commas
+// Rows are seperated by new lines.
+
+// Categories
+// commas <- new line
+// newline escape sequence <- new row
+// EVERYTHING else all other chars - populate a cell
+// console.log(cell1, cell2, cell3, cell4);
+
+// Variables - we using the empty string so that we can concantenate
+
+//  Starting CSV code
+
 let str = `ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26`;
+
+// Variables - we using the empty string so that we can concatenate
+let cell1 = "";
+let cell2 = "";
+let cell3 = "";
+let cell4 = "";
+
+let commas = 0;
+
+for (let i = 0; i < str.length; i++) {
+  let current = str[i];
+
+  if (current == ",") {
+    commas++;
+  } else if (current == "\n") {
+    console.log(cell1, cell2, cell3, cell4);
+    cell1 = '';
+    cell2 = '';
+    cell3 = '';
+    cell4 = '';
+
+    commas = 0;
+  } else {
+    if (commas == 0) {
+      cell1 += current;
+    } else if (commas == 1) {
+      cell2 += current;
+    } else if (commas == 3) {
+      cell3 += current;
+    } else {
+      cell4 += current;
+    }
+  }
+
+  if(i + 1 == str.length){
+    console.log(cell1, cell2, cell3, cell4);
+  }
+}
+
+
+ // ELSE IF str[i] == '/n' do this
+ // ELSE its a char - do this
+
+
+
+//  console.log(str[i])
+// All strings (and arrays) have access to the length property
+
 
 // console.log(str);
 
-let my_str = "";
+// let my_str = "";
 
-for (let i = 0; i <= str.length; i++) {
-  while (j = 0; j <= my_str[i] != " ") {
-    my_str += str[i];
-  }
-  console.log(my_str);
-}
+// for (let i = 0; i <= str.length; i++) {
+//   while (j = 0; j <= my_str[i] != " ") {
+//     my_str += str[i];
+//   }
+//   console.log(my_str);
+// }
 
 
 // for (let char = 0; char < str.length; char++) {
 //   // console.log(str[char]);
 // }
- index and for loop and line breaks are
+// index and for loop and line breaks are
